@@ -1,0 +1,52 @@
+.Maindivuser{
+    position: relative;
+    top: 100px;
+    right: 300px;
+}
+
+.User{
+    margin: 50px auto;
+    padding: 50px;
+    width: 25%;
+    border-radius: 15px;
+    background-color: black;
+    box-shadow: 2px 2px 9px rgb(144, 138, 138);
+    color: white;
+}
+.FormInput{
+      width: 100%;  
+      display: flex;
+      flex-direction: column;
+}
+.font{
+    text-align: center;
+    font-weight: bold;
+    color: #1B75BE;
+}
+label{
+    margin-top: 10px;
+}
+input{
+    margin-top: 5px;
+    padding: 10px;
+}
+.btn{
+    margin-top: 20px;
+    background-color: #1B75BE;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    border: 2px solid #1B75BE;
+}
+.signup{
+    margin-top: 35px;
+    text-align: center;
+}
+.signupbtn{
+    width: 50%;
+    background-color: rgb(70, 186, 70);
+    border-radius: 5px;
+    padding: 2px;
+    text-decoration: none;
+    color: white;
+}

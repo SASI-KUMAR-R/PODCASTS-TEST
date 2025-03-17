@@ -1,0 +1,28 @@
+
+.project1{
+    width: 1000px;
+    height: 375px;
+    display: flex;
+    padding: 0.1em;
+    background-color: hsl(0, 0%, 15%);
+    box-shadow: 1px 1px 20px 1px black;
+    margin: 1em;
+    color: white;
+    /* text-align: center; */
+    position: relative;
+    left:210px;
+}
+
+.h1tagdirect{
+    position: absolute;
+    left: 450px;
+}
+
+.p1tagdirect{
+    position: absolute;
+    top: 100px;
+    left: 400px;
+    /* text-align: center; */
+    gap: 10px;
+}
+

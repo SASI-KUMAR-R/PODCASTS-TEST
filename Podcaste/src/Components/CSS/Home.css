@@ -1,0 +1,16 @@
+.Hometag{
+    color: white;
+    font-size: 30px;
+    position: relative;
+    top: 150px;
+}
+.TAGA{
+    text-decoration: none;
+    color: pink;
+}
+
+.Hometag h2{
+    width: 700px;
+    position: relative;
+    left: 140px;
+}

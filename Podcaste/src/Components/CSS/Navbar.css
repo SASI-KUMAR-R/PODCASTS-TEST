@@ -1,0 +1,69 @@
+body {
+    background-image: url("../../assets/pexels-erkan-302655.jpg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    margin-top: 0px;
+  }
+  
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px 20px;
+    backdrop-filter: blur(2px);
+}
+ 
+.logo {
+    color: white;
+    font-size: 1.5em;
+}
+
+.searchbar {
+    position: relative;
+}
+
+.search-input {
+    width: 400px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.extrasome{
+    display: flex;
+    gap: 10px;
+}
+
+.extrasome span{
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.extrasome .buttonstyle{
+    background: none;
+    color: white;
+    border: 0px;
+}
+
+.iconsstyle{
+    width: 30px;
+    height: 30px;
+}
+
+span{
+  font-size: large;
+  color: white;
+}
+
+.buttonstyle2{
+  border-radius: 70px;
+  background-color: black;
+}
+
+.atag{
+    text-decoration: none;
+    color: white;
+}
