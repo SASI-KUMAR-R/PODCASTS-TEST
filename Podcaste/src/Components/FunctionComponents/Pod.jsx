@@ -14,27 +14,25 @@ function Pod() {
     const fetchPodcasts = async () => {
       try {
         const response = await axios.get("https://podcasts-test.onrender.com/allpodcasts");
+        let backendPodcasts = [];
+
         if (response.data.success) {
-          // Convert backend data format
-          const backendPodcasts = response.data.podcasts.map((podcast) => ({
+          backendPodcasts = response.data.podcasts.map((podcast) => ({
             id: podcast._id,
             title: podcast.title,
             description: podcast.description,
             image: `data:image/png;base64,${podcast.image}`,
             audio: `data:audio/mpeg;base64,${podcast.audio}`,
           }));
-
-          // Convert local JSON data format
-          const localPodcasts = Object.keys(podcastData).map((key) => ({
-            id: key,
-            ...podcastData[key],
-          }));
-
-          // Merge both datasets
-          setPodcasts([...backendPodcasts, ...localPodcasts]);
-        } else {
-          setError("No podcasts found");
         }
+
+        const localPodcasts = Object.keys(podcastData).map((key) => ({
+          id: key,
+          ...podcastData[key],
+        }));
+
+        // **First Local JSON Data, Then Backend Data**
+        setPodcasts([...localPodcasts, ...backendPodcasts]);
       } catch (err) {
         setError("Error fetching podcasts");
       } finally {
