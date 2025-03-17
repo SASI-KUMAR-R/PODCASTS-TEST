@@ -39,7 +39,7 @@ function AddPodcast() {
       formData.append("audio", audio);
 
       const response = await axios.post(
-        "https://test-podcast.onrender.com/addpodcast",
+        "https://podcasts-test.onrender.com/addpodcast",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

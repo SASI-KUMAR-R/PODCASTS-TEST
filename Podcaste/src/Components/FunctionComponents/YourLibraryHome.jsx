@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
-import { useUser } from "../FunctionComponents/UserContext";  // Assuming user context exists
+import { useUser } from "../FunctionComponents/UserContext"; 
 import "../CSS/YourLibraryHome.css";
 
 function YourLibraryHome() {
   const { user } = useUser();  
+  const [searchTerm, setSearchTerm] = useState(""); 
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -36,9 +37,14 @@ function YourLibraryHome() {
     fetchPodcasts();
   }, [user]);
 
+  const filteredPodcasts = podcasts.filter((podcast) =>
+    podcast.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
-      <Navbar />
+      <Navbar setSearchTerm={setSearchTerm} /> 
+
       <div className="MAINDIVOFPOD">
         <div className="addpodcast">
           <h1>
@@ -58,10 +64,10 @@ function YourLibraryHome() {
           <p>Loading...</p>
         ) : error ? (
           <p className="error">{error}</p>
-        ) : podcasts.length > 0 ? (
-          <div className="main">
-            {podcasts.map((podcast) => (
-              <div key={podcast._id} className="audio">
+        ) : filteredPodcasts.length > 0 ? (
+          <div className="mainmain">
+            {filteredPodcasts.map((podcast) => (
+              <div key={podcast._id} className="audioaudio">
                 <img src={`data:image/png;base64,${podcast.image}`} alt={podcast.title} />
                 <h3>{podcast.title}</h3>
                 <p>{podcast.description}</p>
@@ -73,7 +79,7 @@ function YourLibraryHome() {
             ))}
           </div>
         ) : (
-          <p>No podcasts uploaded yet.</p>
+          <p>No podcasts found.</p>
         )}
       </div>
     </div>
