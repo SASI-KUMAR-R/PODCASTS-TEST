@@ -14,7 +14,7 @@ const SignUp = () => {
   const handleSignup = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://test-podcast.onrender.com/signup", {
+      const response = await axios.post("https://podcasts-test.onrender.com/signup", {
         username: userName,
         emailid: emailid,
         password: password,

@@ -20,7 +20,7 @@ function YourLibraryHome() {
 
     const fetchPodcasts = async () => {
       try {
-        const response = await axios.get(`https://test-podcast.onrender.com/mypodcasts/${user.userid}`);
+        const response = await axios.get(`https://podcasts-test.onrender.com/mypodcasts/${user.userid}`);
         if (response.data.success) {
           setPodcasts(response.data.podcasts);
         } else {
