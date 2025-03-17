@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../CSS/Navbar.css";
 import { IoIosNotifications } from "react-icons/io";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 
 function Navbar({ searchTerm, setSearchTerm }) { 
   const navigate = useNavigate();
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <div className="container">
@@ -23,9 +25,21 @@ function Navbar({ searchTerm, setSearchTerm }) {
           />
         </div>
         <div className="extrasome">
-          <button className="buttonstyle">
-            <IoIosNotifications className="iconsstyle" />
-          </button>
+          <div className="notification-wrapper">
+            <button 
+              className="buttonstyle" 
+              onClick={() => setDropdownOpen(!isDropdownOpen)}
+            >
+              <IoIosNotifications className="iconsstyle" />
+            </button>
+
+            {isDropdownOpen && (
+              <div className="dropdown-inside">
+                <p>No new notifications</p>
+              </div>
+            )}
+          </div>
+
           <button className="buttonstyle2" onClick={() => navigate("/")}>
             <ShinyText
               text="LOG OUT"

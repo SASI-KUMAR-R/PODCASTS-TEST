@@ -67,3 +67,35 @@ span{
     text-decoration: none;
     color: white;
 }
+
+.notification-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.dropdown-inside {
+    position: absolute;
+    top: 100%; 
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color: black;
+    white-space: nowrap;
+}
+
+.dropdown-inside p {
+    margin: 0;
+    padding: 8px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.dropdown-inside p:hover {
+    background-color: pink;
+}

@@ -28,7 +28,7 @@ function YourLibraryHome() {
           setError(response.data.message || "No podcasts found");
         }
       } catch (err) {
-        setError("Error fetching podcasts");
+        setError("NO PODCASTS FOUND IN YOUR DATABASE");
       } finally {
         setLoading(false);
       }
