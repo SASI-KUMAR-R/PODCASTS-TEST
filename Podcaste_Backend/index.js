@@ -139,5 +139,28 @@ app.get("/allpodcasts", async (req, res) => {
 });
 
 
+// ---------------- DELETE PODCASTS ROUTE ----------------
+app.delete("/deletepodcast", async (req, res) => {
+  try {
+    const { title } = req.body;
+
+    if (!title) {
+      return res.status(400).json({ message: "Podcast title is required", success: false });
+    }
+
+    const deletedPodcast = await Podcast.findOneAndDelete({ title });
+
+    if (!deletedPodcast) {
+      return res.status(404).json({ message: "Podcast not found", success: false });
+    }
+
+    console.log(`Podcast "${title}" deleted successfully`);
+    res.status(200).json({ message: "Podcast deleted successfully", success: true });
+  } catch (error) {
+    console.error("Error deleting podcast:", error);
+    res.status(500).json({ message: "Internal Server Error", success: false });
+  }
+});
+
 // ---------------- SERVER LISTENING ----------------
 app.listen(port, () => console.log(`Server started on port ${port}`));

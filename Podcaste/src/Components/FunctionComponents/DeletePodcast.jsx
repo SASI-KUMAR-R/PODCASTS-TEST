@@ -1,25 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "../CSS/AddPodcast.css";
 
 function DeletePodcast() {
-  const handleSubmit = (event) => {
+  const [title, setTitle] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Form submitted");
+
+    if (!title.trim()) {
+      setMessage("Please enter a podcast name.");
+      return;
+    }
+
+    try {
+      const response = await axios.delete("https://podcasts-test.onrender.com/deletepodcast", {
+        data: { title }, 
+      });
+
+      if (response.data.success) {
+        setMessage("Podcast deleted successfully.");
+      } else {
+        setMessage(response.data.message || "Failed to delete podcast.");
+      }
+    } catch (error) {
+      setMessage("Error deleting podcast. Please try again.");
+    }
   };
-  
+
   return (
     <div className="Maindiv">
       <div className="maindiv">
         <h1 className="font">DELETE YOUR PODCAST</h1>
 
+        {message && <p className="message">{message}</p>}
+
         <form onSubmit={handleSubmit}>
           <div className="inputdiv">
-            <label htmlFor="username">Name Of Podcast :</label>
+            <label htmlFor="title">Name Of Podcast :</label>
             <input
               type="text"
-              name="username"
+              name="title"
               placeholder="Enter the Name..."
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               required
             />
             <br />
